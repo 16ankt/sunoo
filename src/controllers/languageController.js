@@ -1,8 +1,8 @@
 const common = require("../utility/common");
-const languageServices = require("../services/languageServices");
+const Services = require('../services/index')
 module.exports.language = async (req, res) => {
   try {
-    const language = await languageServices.Language(req);
+    const language = await Services.languages.Language(req);
     common.sendSuccess(res, language);
   } catch (error) {
     common.sendError(res, error.message);
@@ -11,7 +11,7 @@ module.exports.language = async (req, res) => {
 
 module.exports.getalllanguage = async (req, res) => {
   try {
-    const result = await languageServices.getallLanguage(req);
+    const result = await Services.languages.getallLanguage(req);
     common.sendSuccess(res, result);
   } catch (error) {
     common.sendError(res, error.message);
@@ -20,10 +20,11 @@ module.exports.getalllanguage = async (req, res) => {
 
 module.exports.getSongsbylanguage = async (req, res) => {
   try {
-    const result = await languageServices.getSongsByLanguage(req);
+    const result = await Services.languages.getSongsByLanguage(req);
 
     common.sendSuccess(res, result);
   } catch (error) {
     common.sendError(res, error.message);
   }
 };
+

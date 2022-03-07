@@ -1,7 +1,6 @@
 const User = require("../models/userModel");
 const jwt = require("jsonwebtoken");
 const common = require("../utility/common");
-const usermiddleware = require('../middleware.js/usermiddleware')
 
 const generateToken = (req) => {
     const token = req.header("Authorization").replace("Bearer ", "");

@@ -1,9 +1,8 @@
 const common = require("../utility/common");
-const artistServices = require("../services/artistServices");
-
+const Services = require('../services/index');
 module.exports.create = async (req, res) => {
   try {
-    const artist = await artistServices.Create(req);
+    const artist = await Services.artists.Create(req);
     common.sendSuccess(res, artist);
   } catch (error) {
     common.sendError(res, error.message);
@@ -12,19 +11,16 @@ module.exports.create = async (req, res) => {
 
 module.exports.getallartist = async (req, res) => {
   try {
-    const result = await artistServices.getallArtist(req);
+    const result = await Services.artists.getallArtist(req);
     common.sendSuccess(res, result);
   } catch (error) {
     common.sendError(res, error.message);
   }
-
-  common.sendSuccess(res, artist);
 };
 
 module.exports.findbyartist = async (req, res) => {
   try {
-    const result = await artistServices.findbyArtist(req);
-    console.log(result);
+    const result = await Services.artists.findbyArtist(req);
     common.sendSuccess(res, result);
   } catch (error) {
     common.sendError(res, error.message);

@@ -1,6 +1,5 @@
 const Genre = require("../models/genremodel");
 let Model = require("../models/index");
-const User = require("../models/userModel");
 
 module.exports.Create = async (req) => {
   const genre = await Genre.create({
@@ -12,7 +11,6 @@ module.exports.Create = async (req) => {
 
 module.exports.getallGenre = async (req) => {
   const result = Model.genres.find({});
-
   if (!result) {
     throw new Error("No language Found");
   }

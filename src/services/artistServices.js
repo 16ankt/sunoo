@@ -7,7 +7,6 @@ module.exports.Create = async (req) => {
   });
   return artist;
 };
-
 module.exports.findbyArtist = async (req) => {
   const output = await Model.songs
     .find({ artistId: req.body._id })
@@ -18,7 +17,6 @@ module.exports.findbyArtist = async (req) => {
   }
   return output;
 };
-
 module.exports.getallArtist = async (req) => {
   const artist = await Model.artists.find({});
   if (!artist) {

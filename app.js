@@ -7,7 +7,6 @@ app.use('/', require('./src/routes/index'))
 require('./src/config/dbconnection')
 
 
-
 app.listen(port, async () => {
     console.log('Server started at!!', port);
 });

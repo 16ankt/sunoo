@@ -8,5 +8,6 @@ router.use('/genre', require('./genre'))
 router.use('/language', require('./language'))
 router.use('/song', require('./song'))
 router.use('/favourites', require('./Favourites'))
+router.use('/recentlyplayed', require('./recentlyplayed'))
 
 module.exports = router

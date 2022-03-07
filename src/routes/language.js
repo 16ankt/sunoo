@@ -1,9 +1,8 @@
 const express = require('express')
 const router = new express.Router()
-const languageController = require('../controllers/languageController')
+const Controllers = require('../controllers/index')
 
-router.post('/create', languageController.language);
-router.get('/getalllanguage', languageController.getalllanguage);
-router.post('/getSongsbylanguage', languageController.getSongsbylanguage)
-
+router.post('/create', Controllers.languages.language);
+router.get('/languages', Controllers.languages.getalllanguage);
+router.post('/getSongsbylanguage', Controllers.languages.getSongsbylanguage)
 module.exports = router;

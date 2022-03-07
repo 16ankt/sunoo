@@ -1,10 +1,10 @@
-const userServices = require("../services/userServices");
 const common = require("../utility/common");
-
+const Services = require('../services/index');
+const Validator = require('../validator/index')
 module.exports.login = async (req, res) => {
   try {
-    const user = await userServices.Login(req.body);
-    console.log(user);
+    await Validator.users.userloginSchema.validateAsync(req.body);
+    const user = await Services.users.Login(req.body);
     common.sendSuccess(res, user);
   } catch (error) {
     common.sendError(res, error.message);
@@ -13,7 +13,7 @@ module.exports.login = async (req, res) => {
 
 module.exports.logout = async (req, res) => {
   try {
-    const user = await userServices.logOut(req);
+    const user = await Services.users.logOut(req);
     common.sendSuccess(res, "You have been logged out successfully!");
   } catch (error) {
     common.sendError(res, error.message);
@@ -22,7 +22,7 @@ module.exports.logout = async (req, res) => {
 
 module.exports.updateuser = async (req, res) => {
   try {
-    const user = await userServices.updateUser(req);
+    const user = await Services.users.updateUser(req);
     common.sendSuccess(res, user);
   } catch (error) {
     common.sendError(res, error.message);

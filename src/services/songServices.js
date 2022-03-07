@@ -22,8 +22,11 @@ module.exports.addToFavourite = async (req) => {
     }
 
     const check = await Favourite.find({
-        songId: req.body._id,
-        userId: req.user,
+        $and: [
+            { songId: req.body._id },
+            { userId: req.user },
+        ]
+
     });
 
     if (check.length === 0) {

@@ -1,9 +1,8 @@
 const express = require('express')
 const router = new express.Router()
-const artistController = require('../controllers/artistController')
-const usermiddleware = require('../middleware.js/usermiddleware')
-router.post('/create', artistController.create);
-router.get('/allartist', artistController.getallartist);
-router.post('/allsongs', usermiddleware.authenticateUser, artistController.findbyartist)
+const Controllers = require('../controllers/index')
+router.post('/create', Controllers.artists.create);
+router.get('/artists', Controllers.artists.getallartist);
+router.post('/allsongs', Controllers.artists.findbyartist)
 
 module.exports = router;

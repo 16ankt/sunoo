@@ -1,7 +1,9 @@
 const express = require('express')
 const router = new express.Router()
-const favouriteController = require('../controllers/favouriteController')
+const Middleware = require('../middleware/index')
+const Controllers = require('../controllers/index')
 
-router.post('/getfavourites', favouriteController.getfavourites)
+
+router.post('/getfavourites', Middleware.users.authenticateUser, Controllers.favourites.getfavourites)
 
 module.exports = router;
