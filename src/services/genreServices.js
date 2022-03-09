@@ -19,10 +19,10 @@ module.exports.getallGenre = async (req) => {
 
 module.exports.getSongsByGenre = async (req) => {
   const result = Model.songs
-    .find({ genreId: req.body._id })
+    .find({ genreID: req.body._id })
     .populate("artistId");
   if (!result) {
-    throw new Error("No language Found");
+    throw new Error("No songs Found");
   }
   return result;
 };

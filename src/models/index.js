@@ -7,5 +7,6 @@ module.exports = {
     users: require('./userModel'),
     artists: require('./aritstmodel'),
     albums: require('./albummodel'),
-    played: require('./recentlyplayedmodel')
+    played: require('./recentlyplayedmodel'),
+    likes: require('./likemodel')
 }

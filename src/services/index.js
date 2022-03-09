@@ -6,5 +6,6 @@ module.exports = {
     languages: require('./languageServices'),
     users: require('./userServices'),
     favourites: require('./favouriteServices'),
-    played: require('./recentlyplayed')
+    played: require('./recentlyplayed'),
+    likes: require('./likeServices')
 }

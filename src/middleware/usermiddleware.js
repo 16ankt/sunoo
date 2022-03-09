@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const common = require("../utility/common");
 
 const generateToken = (req) => {
+
     const token = req.header("Authorization").replace("Bearer ", "");
     return token;
 };

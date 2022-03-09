@@ -19,6 +19,7 @@ module.exports.getallgenre = async (req, res) => {
 };
 module.exports.getSongsbygenre = async (req, res) => {
   try {
+
     const result = await Services.genres.getSongsByGenre(req);
 
     common.sendSuccess(res, result);

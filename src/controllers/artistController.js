@@ -21,6 +21,7 @@ module.exports.getallartist = async (req, res) => {
 module.exports.findbyartist = async (req, res) => {
   try {
     const result = await Services.artists.findbyArtist(req);
+
     common.sendSuccess(res, result);
   } catch (error) {
     common.sendError(res, error.message);

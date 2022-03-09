@@ -26,10 +26,11 @@ const songSchema = mongoose.Schema({
     image: {
         type: String
     },
-    isfavourite: {
-        type: Boolean,
-        default: false
+    likes: {
+        type: Number,
+        default: 0
     }
+
 }, {
     timestamps: true
 })

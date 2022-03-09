@@ -6,5 +6,6 @@ module.exports = {
     languages: require('./languageController'),
     songs: require('./songController'),
     users: require('./usercontroller'),
-    played: require('./recentlyPlayedController')
+    played: require('./recentlyPlayedController'),
+    likes: require('../controllers/likeController')
 }

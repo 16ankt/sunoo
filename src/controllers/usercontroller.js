@@ -28,3 +28,23 @@ module.exports.updateuser = async (req, res) => {
     common.sendError(res, error.message);
   }
 };
+
+module.exports.userlikedsongs = async (req, res) => {
+
+  try {
+    const songs = await Services.users.userLikedSongs(req);
+    common.sendSuccess(res, songs);
+  } catch (error) {
+    common.sendError(res, error.message)
+  }
+}
+
+module.exports.alllikedsongs = async (req, res) => {
+
+  try {
+    const songs = await Services.users.allLikedSongs(req);
+    common.sendSuccess(res, songs);
+  } catch (error) {
+    common.sendError(res, error.message)
+  }
+}

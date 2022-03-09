@@ -1,4 +1,5 @@
 const User = require("../models/userModel");
+const Model = require('../models/index')
 const validator = require("../validator/uservalidator");
 
 module.exports.Login = async (body) => {
@@ -6,7 +7,7 @@ module.exports.Login = async (body) => {
 
   const { mobilenumber, otp } = body;
 
-  let user = await User.findOne({ mobilenumber, isDeleted: false });
+  let user = await Model.users.findOne({ mobilenumber, isDeleted: false });
   if (!user) {
     user = await User.create({
       mobilenumber: mobilenumber,
@@ -21,8 +22,8 @@ module.exports.Login = async (body) => {
 };
 
 module.exports.logOut = async (req) => {
-  const user = await User.findOneAndUpdate(
-    { _id: req.body._id, isDeleted: false },
+  const user = await Model.users.findOneAndUpdate(
+    { _id: req.user, isDeleted: false },
     { token: null },
     { new: true }
   );
@@ -32,10 +33,35 @@ module.exports.logOut = async (req) => {
 };
 
 module.exports.updateUser = async (req) => {
-  const user = await User.findOneAndUpdate(
+  const user = await Model.users.findOneAndUpdate(
     { _id: req.user },
     { name: req.body.name },
     { new: true }
   );
   return user;
 };
+
+module.exports.userLikedSongs = async (req, res) => {
+  console.log(req)
+  const songs = await Model.likes.find({ userId: req.user }).populate({
+    path: 'songId',
+    populate: {
+      path: 'artistId'
+    }
+  });
+  console.log(songs)
+  if (!songs) {
+    throw new Error("No liked songs");
+  }
+  return songs;
+}
+
+module.exports.allLikedSongs = async (req, res) => {
+  const songs = await Model.songs.find({}).sort({ likes: -1 });
+  console.log(songs)
+  if (!songs) {
+    throw new Error("No liked songs");
+  }
+  return songs;
+
+}

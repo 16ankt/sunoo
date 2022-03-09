@@ -26,7 +26,7 @@ module.exports.recentlyPlayed = async (req, res) => {
             ],
         });
 
-        console.log(findsong);
+
         const updatedsong = await Model.played.create({
             ArtistId: req.body.ArtistId,
             SongId: req.body.SongId,
